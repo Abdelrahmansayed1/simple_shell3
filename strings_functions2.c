@@ -1,4 +1,4 @@
-#include "shell.h";
+#include "shell.h"
 
 /**
  * _strcpy - function that concatenate two string.
