@@ -1,3 +1,5 @@
+#include "shell.h";
+
 /**
  * strtow - function that splits string into words
  * @str: string being passed
