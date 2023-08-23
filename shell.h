@@ -1,16 +1,16 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
-#include <errno.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <limits.h>
-#include <sys/wait.h>
-#include <sys/types.h>
-#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <limits.h>
+#include <fcntl.h>
+#include <errno.h>
 
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
@@ -47,11 +47,6 @@ typedef struct liststr
 	struct liststr *next;
 } list_t;
 
-typedef struct builtin
-{
-	char *type;
-	int (*func)(info_t *);
-} builtin_table;
 
 
 typedef struct passinfo
@@ -70,9 +65,8 @@ typedef struct passinfo
 	char **environ;
 	int env_changed;
 	int status;
-
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	char **cmd_buf;
+	int cmd_buf_type;
 	int readfd;
 	int histcount;
 } info_t;
@@ -80,6 +74,13 @@ typedef struct passinfo
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
+
+typedef struct builtin
+{
+        char *type;
+        int (*func)(info_t *);
+} builtin_table;
+
 /* Strings functions */
 void _eputs(char *);
 int _eputchar(char);
