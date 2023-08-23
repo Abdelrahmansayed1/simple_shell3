@@ -31,13 +31,13 @@ char *_memset(char *s, char b, unsigned int n)
 
 void ffree(char **pp)
 {
-  char **a = pp;
+  	char **a = pp;
   
-  if (!pp)
-    return;
-  while (*p)
-    free (*pp++);
-  free (a);
+  	if (!pp)
+    		return;
+  	while (*pp)
+    		free (*pp++);
+  	free (a);
 }
 
 /**

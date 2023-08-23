@@ -1,6 +1,6 @@
 #include "shell.h"
 
-* _strlen - function get length of string
+/* _strlen - function get length of string
  *
  * @s: string
  *
@@ -20,7 +20,7 @@ int _strlen(char *s)
 	return (i);
 }
 
-* _strcmp - function that compares two strings
+/* _strcmp - function that compares two strings
  *
  * @s1: represents string 1
  *
@@ -29,22 +29,22 @@ int _strlen(char *s)
  * Return: always concatanted string (success)
 */
   
-int _strcmp(char *s1, *s2)
+int _strcmp(char *s1, char *s2)
 {
 	while (*s1 && *s2)
 	{
 		if (*s1 != *s2)
 			return (*s1 - *s2);
 		s1++;
-		s2++; 
+		s2++;
 	}
-	if (*s1 == *s2)	
+	if (*s1 == *s2)
 		return (0);
 	else
-		return (*s1 , *s2 ? -1 : 1); 
+		return (*s1 < *s2 ? -1 : 1);
 }
 
-* *starts_wit - function get the needle
+/* *starts_wit - function get the needle
  *
  * @haystack: represents string 1
  *
@@ -59,10 +59,11 @@ char *starts_with(const char *haystack, const char *needle)
 	while (*needle)
 		if (*needle++ != *haystack++)
 			return (NULL);
-		return ((char *)haystack);
+	return ((char *)haystack);
 }
 
-* _strcat - function that concatenate two string.
+
+/* _strcat - function that concatenate two string.
  *
  * @dest: represents string 1
  *

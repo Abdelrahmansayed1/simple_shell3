@@ -30,7 +30,7 @@ char *_strcpy(char *dest, char *src)
  * Return: string of chars
 */
 
-char *_strdup(char *str)
+char *_strdup(const char *str)
 {
 	int length = strlen(str);
 	char *s = (char *)malloc(length * sizeof(*str) + 1);
@@ -71,7 +71,7 @@ void _puts(char *str)
 int _putchar(char c)
 {
   static int i = 0;
-  static char buf[WRITR_BUF_SIZE];
+  static char buf[WRITE_BUF_SIZE];
 
   if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
   {

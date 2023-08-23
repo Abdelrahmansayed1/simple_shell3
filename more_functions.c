@@ -5,6 +5,7 @@
  * @info: address
  *
  * Return: 1 interactive 0 not
+*/
 
 int interactive(info_t *info)
 {
