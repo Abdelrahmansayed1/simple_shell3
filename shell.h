@@ -16,21 +16,19 @@
 #define BUF_FLUSH -1
 #define READ_BUF_SIZE 1024
 
-
-#define CMD_NORM   0
-#define CMD_OR		 1
-#define CMD_AND		 2
-#define CMD_CHAIN	 3
+#define CMD_NORM 0
+#define CMD_OR 1
+#define CMD_AND 2
+#define CMD_CHAIN 3
 
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define HIST_FILE	".simple_shell_history"
-#define HIST_MAX	4096
+#define HIST_FILE ".simple_shell_history"
+#define HIST_MAX 4096
 
-
-#define CONVERT_UNSIGNED	2
-#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED 2
+#define CONVERT_LOWERCASE 1
 
 extern char **environ;
 
@@ -46,8 +44,6 @@ typedef struct liststr
 	char *str;
 	struct liststr *next;
 } list_t;
-
-
 
 typedef struct passinfo
 {
@@ -71,14 +67,16 @@ typedef struct passinfo
 	int histcount;
 } info_t;
 
-#define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-		0, 0, 0}
+#define INFO_INIT                                                               \
+	{                                                                           \
+		NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+			0, 0, 0                                                             \
+	}
 
 typedef struct builtin
 {
-        char *type;
-        int (*func)(info_t *);
+	char *type;
+	int (*func)(info_t *);
 } builtin_table;
 
 /* Strings functions */
@@ -160,7 +158,6 @@ char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
-
 
 int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);

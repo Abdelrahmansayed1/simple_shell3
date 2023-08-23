@@ -35,8 +35,6 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 	return (t);
 }
 
-
-
 ssize_t get_input(info_t *info)
 {
 	static char *buf;
@@ -48,36 +46,33 @@ ssize_t get_input(info_t *info)
 	r = input_buf(info, &buf, &len);
 	if (r == -1)
 		return (-1);
-	if (len) 
+	if (len)
 	{
-		j = i; 
-		p = buf + i; 
+		j = i;
+		p = buf + i;
 
 		check_chain(info, buf, &j, i, len);
-		while (j < len) 
+		while (j < len)
 		{
 			if (is_chain(info, buf, &j))
 				break;
 			j++;
 		}
 
-		i = j + 1; 
+		i = j + 1;
 		if (i >= len)
 		{
 			i = len = 0;
 			info->cmd_buf_type = CMD_NORM;
 		}
 
-		*buf_p = p; 
+		*buf_p = p;
 		return (_strlen(p));
 	}
 
 	*buf_p = buf;
-	return (r); 
+	return (r);
 }
-
-
-
 
 ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
@@ -90,7 +85,6 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
 		*i = r;
 	return (r);
 }
-
 
 int _getline(info_t *info, char **ptr, size_t *length)
 {
@@ -131,8 +125,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	return (s);
 }
 
-
-void sigintHandler(__attribute__((unused))int sig_num)
+void sigintHandler(__attribute__((unused)) int sig_num)
 {
 	_puts("\n");
 	_puts("$ ");
