@@ -11,7 +11,6 @@ char **get_environ(info_t *info)
 	return (info->environ);
 }
 
-
 int _unsetenv(info_t *info, char *var)
 {
 	list_t *node = info->env;
@@ -37,8 +36,6 @@ int _unsetenv(info_t *info, char *var)
 	return (info->env_changed);
 }
 
-
-
 int _setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
@@ -49,7 +46,7 @@ int _setenv(info_t *info, char *var, char *value)
 		return (0);
 
 	buf = malloc(_strlen(var) + _strlen(value) + 2);
-	if (buf == NULL)
+	if (!buf)
 		return (1);
 	_strcpy(buf, var);
 	_strcat(buf, "=");

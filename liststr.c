@@ -25,8 +25,6 @@ list_t *add_node(list_t **head, const char *str, int num)
 	return (new_head);
 }
 
-
-
 list_t *add_node_end(list_t **head, const char *str, int num)
 {
 	list_t *new_node, *node;
@@ -60,8 +58,6 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	return (new_node);
 }
 
-
-
 size_t print_list_str(const list_t *h)
 {
 	size_t i = 0;
@@ -75,10 +71,6 @@ size_t print_list_str(const list_t *h)
 	}
 	return (i);
 }
-
-
-
-
 
 int delete_node_at_index(list_t **head, unsigned int index)
 {
@@ -113,3 +105,20 @@ int delete_node_at_index(list_t **head, unsigned int index)
 	return (0);
 }
 
+void free_list(list_t **head_ptr)
+{
+	list_t *node, *next_node, *head;
+
+	if (!head_ptr || !*head_ptr)
+		return;
+	head = *head_ptr;
+	node = head;
+	while (node)
+	{
+		next_node = node->next;
+		free(node->str);
+		free(node);
+		node = next_node;
+	}
+	*head_ptr = NULL;
+}

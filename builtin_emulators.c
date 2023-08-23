@@ -22,12 +22,21 @@ int _myexit(info_t *info)
 	return (-2);
 }
 
+int _myhelp(info_t *info)
+{
+	char **arg_array;
 
+	arg_array = info->argv;
+	_puts("help call works. Function not yet implemented \n");
+	if (0)
+		_puts(*arg_array);
+	return (0);
+}
 
 int _mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
-	int num;
+	int chdir_ret;
 
 	s = getcwd(buffer, 1024);
 	if (!s)
@@ -36,9 +45,10 @@ int _mycd(info_t *info)
 	{
 		dir = _getenv(info, "HOME=");
 		if (!dir)
-			num = chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
+			chdir_ret = /* TODO: what should this be? */
+				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
-			num = chdir(dir);
+			chdir_ret = chdir(dir);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
@@ -49,11 +59,12 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		num = chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+		chdir_ret = /* TODO: what should this be? */
+			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
-		num = chdir(info->argv[1]);
-	if (num == -1)
+		chdir_ret = chdir(info->argv[1]);
+	if (chdir_ret == -1)
 	{
 		print_error(info, "can't cd to ");
 		_eputs(info->argv[1]), _eputchar('\n');
@@ -65,18 +76,3 @@ int _mycd(info_t *info)
 	}
 	return (0);
 }
-
-
-int _myhelp(info_t *info)
-{
-	char **arg_array;
-
-	arg_array = info->argv;
-  
-	_puts("help call works. Function not yet implemented \n");
-	if (0)
-		_puts(*arg_array);
-	return (0);
-}
-
-

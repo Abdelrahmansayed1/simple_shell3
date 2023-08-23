@@ -53,6 +53,19 @@ int build_history_list(info_t *info, char *buf, int linecount)
 	return (0);
 }
 
+int renumber_history(info_t *info)
+{
+	list_t *node = info->history;
+	int i = 0;
+
+	while (node)
+	{
+		node->num = i++;
+		node = node->next;
+	}
+	return (info->histcount = i);
+}
+
 int read_history(info_t *info)
 {
 	int i, last = 0, linecount = 0;
@@ -94,17 +107,4 @@ int read_history(info_t *info)
 		delete_node_at_index(&(info->history), 0);
 	renumber_history(info);
 	return (info->histcount);
-}
-
-int renumber_history(info_t *info)
-{
-	list_t *node = info->history;
-	int i = 0;
-
-	while (node)
-	{
-		node->num = i++;
-		node = node->next;
-	}
-	return (info->histcount = i);
 }

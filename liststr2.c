@@ -12,8 +12,6 @@ size_t list_len(const list_t *h)
 	return (i);
 }
 
-
-
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
@@ -44,9 +42,6 @@ char **list_to_strings(list_t *head)
 	return (strs);
 }
 
-
-
-
 size_t print_list(const list_t *h)
 {
 	size_t i = 0;
@@ -64,8 +59,6 @@ size_t print_list(const list_t *h)
 	return (i);
 }
 
-
-
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
@@ -79,7 +72,6 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 	}
 	return (NULL);
 }
-
 
 ssize_t get_node_index(list_t *head, list_t *node)
 {

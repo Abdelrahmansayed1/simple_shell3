@@ -10,34 +10,31 @@
  * @n: which index the string will concatenated
  *
  * Return: pointer s
-*/
+ */
 
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int i;
+  unsigned int i;
 
-	for (i = 0; n > 0; i++, n--)
-	{
-		s[i] = b;
-	}
-
-	return (s);
+  for (i = 0; i < n; i++)
+    s[i] = b;
+  return (s);
 }
 
 /**
  * ffree - free astring of strings
  * @pp: string of strings
-*/
+ */
 
 void ffree(char **pp)
 {
-  	char **a = pp;
-  
-  	if (!pp)
-    		return;
-  	while (*pp)
-    		free (*pp++);
-  	free (a);
+  char **a = pp;
+
+  if (!pp)
+    return;
+  while (*pp)
+    free(*pp++);
+  free(a);
 }
 
 /**
@@ -50,7 +47,7 @@ void ffree(char **pp)
  * @new_size: which index the string will concatenated
  *
  * Return: pointer s
-*/
+ */
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
@@ -58,7 +55,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
   if (!ptr)
     return (malloc(new_size));
-  if (! new_size)
+  if (!new_size)
     return (free(ptr), NULL);
   if (new_size == old_size)
     return (ptr);
@@ -68,9 +65,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
     return (NULL);
 
   old_size = old_size < new_size ? old_size : new_size;
-
   while (old_size--)
-    p[old_size] = ((char *) ptr)[old_size];
-  free (ptr);
+    p[old_size] = ((char *)ptr)[old_size];
+  free(ptr);
   return (p);
 }
